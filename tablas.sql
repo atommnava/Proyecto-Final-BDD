@@ -12,4 +12,4 @@ CREATE TABLE asistencias_pf(idAsistencia INT PRIMARY KEY AUTO_INCREMENT NOT NULL
 
 CREATE TABLE actividades_presentadores_pf(idActividad INT NOT NULL, CONSTRAINT idActividad_fk3 FOREIGN KEY(idActividad) REFERENCES actividades_pf(idActividad) ON DELETE CASCADE ON UPDATE CASCADE, idPresentador INT NOT NULL, CONSTRAINT idPresentador_fk2 FOREIGN KEY(idPresentador) REFERENCES presentadores_pf(idPresentador) ON DELETE CASCADE ON UPDATE CASCADE);
 
-CREATE TABLE asistentes_pf(idAsistente INT PRIMARY KEY, CONSTRAINT idAsistente_fk FOREIGN KEY (idAsistente) REFERENCES usuarios_pf(idUsuario) ON DELETE CASCADE ON UPDATE CASCADE, matricula VARCHAR(20) UNIQUE NOT NULL, carrera VARCHAR(100) NOT NULL); 
+CREATE TABLE asistentes_pf (idAsistente INT PRIMARY KEY AUTO_INCREMENT, idUsuario INT NOT NULL, CONSTRAINT fk_usuario_asistente FOREIGN KEY (idUsuario) REFERENCES usuarios_pf(idUsuario) ON DELETE CASCADE ON UPDATE CASCADE, matricula VARCHAR(20) UNIQUE NOT NULL, carrera VARCHAR(100) NOT NULL);
