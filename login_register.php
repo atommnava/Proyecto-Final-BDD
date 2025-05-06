@@ -44,15 +44,16 @@ if (isset($_POST['login'])) {
     $result = $conn -> query("SELECT * FROM usuarios_pf WHERE correo = '$email'");
     if ($result -> num_rows > 0) {
         $user = $result -> fetch_assoc();
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['name'] = $user['name'];
-            $_SESSION['email'] = $user['email'];
 
-            if ($user['role'] === 'a') { //     A    D    M    I    N
-                header("Location: admin_page.php");
-            } else {
-                header("Location: user_page.php");
-            }
+            if (password_verify($password, $user['contrasenia'])) {
+                $_SESSION['name'] = $user['nombre'];
+                $_SESSION['email'] = user['correo'];
+            
+                if ($user['tipo'] === 'a') { // 'a' es admin, 'u' es usuario
+                    header("Location: admin_page.php");
+                } else {
+                    header("Location: user_page.php");
+                }
             exit();
         }
     }

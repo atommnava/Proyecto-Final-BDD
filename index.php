@@ -38,7 +38,7 @@ function isActiveForm($formName, $activeForm) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EVENTOSLANDIA</title>
+    <title>Full Stack Login & Register Form with User $ Admin page</title>
     <link rel="stylesheet" href="style2.css">
 </head>
 <body>
