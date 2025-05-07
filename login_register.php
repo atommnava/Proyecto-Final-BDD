@@ -24,7 +24,7 @@ if (isset($_POST['register'])) {
 
     $checkEmail = $conn -> query("SELECT correo FROM usuarios_pf WHERE correo = '$email'");
     if ($checkEmail -> num_rows > 0) {
-        $_SESSION['register_error'] = 'Email is already registered!';
+        $_SESSION['register_error'] = 'El correo ya esta registrado!';
         $_SESSION['active_form'] = 'register';
     } else {
         $conn -> query("INSERT INTO usuarios_pf(nombre, correo, contrasenia, tipo) VALUES('$name', '$email', '$password', '$role')");
@@ -57,7 +57,7 @@ if (isset($_POST['login'])) {
             exit();
         }
     }
-    $_SESSION['login_error'] = 'Incorrect email or password';
+    $_SESSION['login_error'] = 'El correo y/o la contraseña es incorrecta...';
     $_SESSION['active_form'] = 'login';
     header("Location: index.php");
     exit();

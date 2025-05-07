@@ -38,38 +38,38 @@ function isActiveForm($formName, $activeForm) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Stack Login & Register Form with User $ Admin page</title>
+    <title>Lobby</title>
     <link rel="stylesheet" href="style2.css">
 </head>
 <body>
     <div class="container"> 
         <div class="form-box <?= isActiveForm('login', $activeForm); ?>" id="login-form">
             <form action="login_register.php" method="post">
-                <h2>Login</h2>
+                <h2>Iniciar sesión</h2>
                 <!-- This is intended to display login error messages -->
                 <!-- if there are error messages stored in the session-->
                 <?= showError($errors['login']); ?>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit" name="login">Login</button>
-                <p>Don't have an account? <a href="#" onclick="showForm('register-form')">Register</a></p>
+                <input type="email" name="email" placeholder="Correo" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <button type="submit" name="login">Iniciar sesión</button>
+                <p>No tiene una cuenta? <a href="#" onclick="showForm('register-form')">Registrarse</a></p>
             </form>
         </div>
 
         <div class="form-box <?= isActiveForm('register', $activeForm); ?>" id="register-form">
             <form action="login_register.php" method="post">
-                <h2>Register</h2>
+                <h2>Registrarse</h2>
                 <?= showError($errors['register']); ?>
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="text" name="name" placeholder="Nombre" required>
+                <input type="email" name="email" placeholder="Correo" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
                 <select name="role" required>
-                    <option value="">--Select Role--</option>
-                    <option value="u">User</option>
+                    <option value="">--Tipo de usuario--</option>
+                    <option value="u">Usuario</option>
                     <option value="a">Admin</option>
                 </select>
-                <button type="submit" name="register">Register</button>
-                <p>Already have an account? <a href="#" onclick="showForm('login-form')">Login</a></p>
+                <button type="submit" name="register">Registrarse</button>
+                <p>Ya tiene una cuenta? <a href="#" onclick="showForm('login-form')">Iniciar sesión</a></p>
             </form>
         </div>
     </div>

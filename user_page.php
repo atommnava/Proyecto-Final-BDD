@@ -16,15 +16,15 @@ if (!isset($_SESSION['email'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Page</title>
+    <title>Página Usuario</title>
     <link rel="stylesheet" href="style2.css">
 </head>
 
 <body style="background: #fff;">
     <div class="box">
-        <h1>Welcome, <span><?= $_SESSION['name']; ?></span></h1>
-        <p>This is an <span>user</span> page</p>
-        <button onclick="window.location.href='logout.php'">Logout</button>
+        <h1>Bienvenido, <span><?= $_SESSION['name']; ?></span></h1>
+        <p>Esta es la <span>página</span> Usuario</p>
+        <button onclick="window.location.href='logout.php'">Cerrar sesión</button>
     </div>
 </body>
 </html>
