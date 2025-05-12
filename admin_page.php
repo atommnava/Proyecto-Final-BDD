@@ -30,12 +30,6 @@ if (!isset($_SESSION['email'])) {
 
 <body style="background: #fff;">
 
-<div id="boton-redireccion">
-			<a href="index.php"  target="_self">
-				Login/Register
-			</a>
-		</div>
-
 		<div class="wrapContenido layout">
 			<div>
 				<nav>
