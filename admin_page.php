@@ -1,6 +1,6 @@
 <?php
 
-
+include "config.php";
 session_start();
 
 // It ensures that the user must log in before accessing the admin

@@ -10,7 +10,7 @@
 <?php
 // Handling the registration process
 session_start();
-require_once 'config.php';
+include "config.php";
 
 /*
  * We need to create the condition 

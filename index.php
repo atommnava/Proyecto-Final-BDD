@@ -13,20 +13,12 @@ $activeForm = $_SESSION['active_form'] ?? 'login';
 // remains active.
 session_unset();
 
-/*
- * @brief It returns an HTML P element containing the error message of "error is not empty".
- * @param error Parameter called error 
- */
+
 function showError($error) {
     return !empty($error) ? "<p class='error-message'>$error</p>" : '';
 }
 
-/*
- * @parameter activeForm
- * @parameter formName
- * @brief This function checks whether the given form name matches the active form,
- * if it does, it will return the string active which is used to add a class to the HTML element.
- */
+
 function isActiveForm($formName, $activeForm) {
     return $formName === $activeForm ? 'active' : '';
 }

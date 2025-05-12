@@ -9,17 +9,16 @@
 	// 
 	// ========================================================================
 	$template = new HTML_Template_ITX('./templates');
-	$template->loadTemplatefile("./opcion3.html", true, true);
+	$template->loadTemplatefile("./opcion4.html", true, true);
 	
 	$nombre = $_POST['nombre'];
 	$numero = $_POST['numero'];
 
 	$link = mysqli_connect($cfgServer['host'], $cfgServer['user'], $cfgServer['password']) or die('Could not connect: ' . mysqli_error($link)); 
 	mysqli_select_db($link, $cfgServer['dbname']) or die("Could not select database"); 
-	$query = "SELECT idEvento, COUNT(idActividad) AS total FROM actividades_pf JOIN eventos_pf USING(idEvento)
-	GROUP BY idEvento ORDER BY total DESC LIMIT 3"; 
+	$query = "SELECT COUNT(*) AS total_eventos, COUNT(CASE WHEN fechaFinal < CURDATE() THEN 1 END) AS eventos_pasados, COUNT(CASE WHEN fechaInicio > CURDATE() THEN 1 END) AS eventos_proximos FROM eventos_pf"; 
 
-                $template->addBlockfile("CONTENIDO", "USUARIOS", "tabla3.html");                      
+                $template->addBlockfile("CONTENIDO", "USUARIOS", "tabla4.html");                      
                                                                                                         
                 $template->setCurrentBlock("USUARIOS");                                              
                 $template->setVariable("MENSAJE_BIENVENIDA", "Hola Usuario");                           
@@ -33,8 +32,9 @@
 					$template->setCurrentBlock("USUARIO"); 
 
 					 // Desplegamos la informacion de cada presidentes                               
-					 $template->setVariable("ID_EVENTO", $line['idEvento']);                              
-					 $template->setVariable("TOTAL", $line['total']);                      																				 
+					 $template->setVariable("TOTAL_EVENTOS", $line['total_eventos']);                              
+					 $template->setVariable("EVENTOS_PASADOS", $line['eventos_pasados']);                      																				 
+					 $template->setVariable("EVENTOS_PROXIMOS", $line['eventos_proximos']);                      																				 
 					 $template->parseCurrentBlock("USUARIO");                                     
 			  }// while                                                                              
 																									 
