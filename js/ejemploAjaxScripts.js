@@ -18,6 +18,9 @@ function despliegaContenido(contenido, cadena, valor){
 	else if (contenido == 3) {
 		url = "./ejemploAjaxContenido3.php";
 	}
+	else if (contenido === 4) {
+		url = "./ejemploAjaxContenido4.php";
+	}
 	
 	$.ajax({
 		url: url,
