@@ -21,7 +21,9 @@
                 $template->addBlockfile("CONTENIDO", "USUARIOS", "tabla4.html");                      
                                                                                                         
                 $template->setCurrentBlock("USUARIOS");                                              
-                $template->setVariable("MENSAJE_BIENVENIDA", "Hola Usuario");                           
+                $template->setVariable("MENSAJE_BIENVENIDA", "Número de eventos registrados y número de
+				eventos pasados y número de eventos
+				próximos");                           
                                                                                                         
                 // Ejecutamos el query                                                                  
                 $result = mysqli_query($link, $query) or die("Query 1 failed");  

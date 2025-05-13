@@ -42,3 +42,16 @@ function muestraContenido(result,status,xhr){
 function funcionErrors(xhr,status,error){
 	alert(xhr);
 }// muestraEditarUsuario
+
+function cargarContenido(tipo) {
+	$.ajax({
+		url: 'cargar_'+tipo+'.php',
+		method: 'GET',
+		success: function(response) {
+			$('#'+tipo+'-content').html(response);
+		},
+		error: function(xhr) {
+			alert('Error al cargar '+tipo+': ' + xhr.responseText);
+		}
+	});
+}

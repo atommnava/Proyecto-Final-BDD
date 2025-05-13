@@ -22,7 +22,7 @@
                 $template->addBlockfile("CONTENIDO", "USUARIOS", "tabla3.html");                      
                                                                                                         
                 $template->setCurrentBlock("USUARIOS");                                              
-                $template->setVariable("MENSAJE_BIENVENIDA", "Hola Usuario");                           
+                $template->setVariable("MENSAJE_BIENVENIDA", "Eventos con más actividades.");                           
                                                                                                         
                 // Ejecutamos el query                                                                  
                 $result = mysqli_query($link, $query) or die("Query 1 failed");  
