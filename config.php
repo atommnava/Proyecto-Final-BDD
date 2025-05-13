@@ -2,9 +2,9 @@
 
 // Configuración
 $cfgServer['host'] = 'localhost';
-$cfgServer['user'] = '';
-$cfgServer['password'] = '';
-$cfgServer['dbname'] = '';
+$cfgServer['user'] = 'ict23amn';
+$cfgServer['password'] = '258927';
+$cfgServer['dbname'] = 'ict23amn';
 /*
  * @Author Atom Alexander M. Nava
  * @brief Archivo de configuración para la conexión a la base de datos
@@ -14,9 +14,9 @@ $cfgServer['dbname'] = '';
 
  // Configuración a la base de datos.
 $host = "localhost";
-$user = "";
-$password = "";
-$database = "";
+$user = "ict23amn";
+$password = "258927";
+$database = "ict23amn";
 
 // Crear conexión
 $conn = new mysqli($host, $user, $password, $database);

@@ -18,12 +18,10 @@
 	mysqli_select_db($link, $cfgServer['dbname']) or die("Could not select database"); 
 	$query = "SELECT * FROM eventos_pf"; 
 
-                $template->addBlockfile("CONTENIDO", "USUARIOS", "tabla5.html");                      
+                $template->addBlockfile("CONTENIDO", "EVENTOS", "tabla5.html");                      
                                                                                                         
-                $template->setCurrentBlock("USUARIOS");                                              
-                $template->setVariable("MENSAJE_BIENVENIDA", "Número de eventos registrados y número de
-				eventos pasados y número de eventos
-				próximos");                           
+                $template->setCurrentBlock("EVENTOS");                                              
+                $template->setVariable("MENSAJE_BIENVENIDA", "EVENTOS");                           
                                                                                                         
                 // Ejecutamos el query                                                                  
                 $result = mysqli_query($link, $query) or die("Query 1 failed");  
@@ -31,7 +29,7 @@
 				while($line = mysqli_fetch_assoc($result)){                                                                                                                            
 																									
 					// Fijamos el bloque con la informacion de cada presidente                      
-					$template->setCurrentBlock("USUARIO"); 
+					$template->setCurrentBlock("EVENTO"); 
 
 					 // Desplegamos la informacion de cada presidentes                               
 					 $template->setVariable("ID_EVENTO", $line['idEvento']);                              
@@ -40,11 +38,11 @@
 					 $template->setVariable("FECHA_FINAL", $line['fechaFinal']);                      																				 
 					 $template->setVariable("UBICACION", $line['ubicacion']);                      																				 
 					 $template->setVariable("DESCRIPCION", $line['descripcion']);                      																				 
-					 $template->parseCurrentBlock("USUARIO");                                     
+					 $template->parseCurrentBlock("EVENTO");                                     
 			  }// while                                                                              
 																									 
 																									 
-			 $template->parseCurrentBlock("USUARIOS");                                            
+			 $template->parseCurrentBlock("EVENTOS");                                            
 			 // Liberamos memoria                                                                    
 			 mysqli_free_result($result);                                                            
 																									 

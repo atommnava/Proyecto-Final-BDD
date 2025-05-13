@@ -24,7 +24,7 @@ if (!isset($_SESSION['email'])) {
 
 <body style="background: #f5f5f5;">
     <div class="admin-container">
-        <div class="box">
+        <div class="box" style="position: absolute; left: 50px; top: 550px;">
             <h1>Bienvenido, <span><?= htmlspecialchars($_SESSION['name']); ?></span></h1>
             <p>Panel de <span>Administración</span></p>
             <button onclick="window.location.href='logout.php'">Cerrar sesión</button>
