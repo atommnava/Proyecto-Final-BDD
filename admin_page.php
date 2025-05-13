@@ -145,14 +145,6 @@ if (!isset($_SESSION['email'])) {
             </div>
         </div>
 
-        <div class="admin-section">
-            <h2>Listas de Asistencia</h2>
-            <div class="admin-actions">
-                <button onclick="cargarContenido('asistencias')">Ver Reportes</button>
-                <button onclick="window.location.href='exportar_asistencias.php'">Exportar</button>
-            </div>
-            <div id="asistencias-content"></div>
-        </div>
     </div>
 
     <script>

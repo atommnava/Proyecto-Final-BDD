@@ -17,7 +17,7 @@ if (!isset($_SESSION['email'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Usuario</title>
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style.css">
 
     <link rel="stylesheet" type="text/css" media="All" href="./css/ejemploAjaxStyle.css" />  
 		<link rel="shortcut icon" href="../img/iconos/favicon.ico">
