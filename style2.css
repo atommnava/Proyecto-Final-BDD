@@ -105,13 +105,26 @@ span {
     color: #7494ec;
 }
 
+.box {
+    position: absolute;
+    left: 50px; /* Ajusta este valor según necesites */
+    top: 150px; /* Posición vertical */
+    text-align: left;
+    width: auto;
+    padding: 20px;
+    background: transparent; /* Elimina fondo si es necesario */
+    box-shadow: none; /* Elimina sombra si existe */
+}
+
+.box h1, 
 .box p {
-    font-size: 22px;
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 .box button {
-    display: block;
-    width: 300px;
-    margin: 0 auto;
-    
+    margin: 20px 0 0 0; /* Ajusta los márgenes del botón */
+    width: auto;
+    padding: 12px 24px;
 }

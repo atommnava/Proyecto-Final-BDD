@@ -35,17 +35,17 @@ if (!isset($_SESSION['email'])) {
 				<nav>
 					<ul id="menu">
 						<li>
-							<a class= "comLink" href="javascript:;" onclick="despliegaContenido(1, 'ejemplo1', 1);"><span class="menu_home">CONTENIDO 1</span></a>
+							<a class= "comLink" href="javascript:;" onclick="despliegaContenido(1, 'ejemplo1', 1);"><span class="menu_home">Consulta 1</span></a>
 							
 						</li>
 						<li>
-							<a class= "comLink" href="javascript:;" onclick="despliegaContenido(2, 'ejemplo2', 2);"><span class="menu_home">CONTENIDO 2</span></a>
+							<a class= "comLink" href="javascript:;" onclick="despliegaContenido(2, 'ejemplo2', 2);"><span class="menu_home">Consulta 2</span></a>
 						</li>
 						<li>
-							<a class= "comLink" href="javascript:;" onclick="despliegaContenido(3, 'ejemplo3', 3);"><span class="menu_home">CONTENIDO 3</span></a>
+							<a class= "comLink" href="javascript:;" onclick="despliegaContenido(3, 'ejemplo3', 3);"><span class="menu_home">Consulta 3</span></a>
 						</li>
 						<li>
-							<a class= "comLink" href="javascript:;" onclick="despliegaContenido(4, 'ejemplo4', 4);"><span class="menu_home">CONTENIDO 4</span></a>
+							<a class= "comLink" href="javascript:;" onclick="despliegaContenido(4, 'ejemplo4', 4);"><span class="menu_home">Consulta 4</span></a>
 						</li>
 						
 					</ul>
@@ -57,7 +57,7 @@ if (!isset($_SESSION['email'])) {
 			</div>
 		</div>
 
-    <div class="box">
+	<div class="box" style="position: absolute; left: 50px; top: 600px;">
         <h1>Bienvenido, <span><?= $_SESSION['name']; ?></span></h1>
         <p>Esta es la <span>página</span> Admin</p>
         <button onclick="window.location.href='logout.php'">Cerrar sesión</button>

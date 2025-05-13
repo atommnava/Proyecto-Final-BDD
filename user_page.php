@@ -57,7 +57,7 @@ if (!isset($_SESSION['email'])) {
 			</div>
 		</div>
 
-    <div class="box">
+    <div class="box" style="position: absolute; left: 50px; top: 600px;">
         <h1>Bienvenido, <span><?= $_SESSION['name']; ?></span></h1>
         <p>Esta es la <span>página</span> Usuario</p>
         <button onclick="window.location.href='logout.php'">Cerrar sesión</button>
