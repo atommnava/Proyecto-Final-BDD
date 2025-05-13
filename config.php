@@ -1,5 +1,6 @@
 <?php
 
+// Configuración
 $cfgServer['host'] = 'localhost';
 $cfgServer['user'] = '';
 $cfgServer['password'] = '';
