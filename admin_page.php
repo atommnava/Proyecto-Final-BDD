@@ -34,27 +34,21 @@ if (!isset($_SESSION['email'])) {
             <h2>Gestión de Eventos</h2>
             <div class="admin-actions">
                 <button onclick="window.location.href='agregar_evento.php'">Agregar Evento</button>
-                <button onclick="cargarContenido('eventos')">Ver Todos</button>
             </div>
-            <div id="eventos-content"></div>
         </div>
 
         <div class="admin-section">
             <h2>Gestión de Participantes</h2>
             <div class="admin-actions">
                 <button onclick="window.location.href='agregar_participante.php'">Agregar Participante</button>
-                <button onclick="cargarContenido('participantes')">Ver Todos</button>
             </div>
-            <div id="participantes-content"></div>
         </div>
 
         <div class="admin-section">
             <h2>Gestión de Ponentes</h2>
             <div class="admin-actions">
                 <button onclick="window.location.href='agregar_ponente.php'">Agregar Ponente</button>
-                <button onclick="cargarContenido('ponentes')">Ver Todos</button>
             </div>
-            <div id="ponentes-content"></div>
         </div>
 
         <div class="consultas-container">
@@ -81,6 +75,21 @@ if (!isset($_SESSION['email'])) {
                             <li>
                                 <a class="comLink" href="javascript:;" onclick="despliegaContenido(4, 'ejemplo4', 4);">
                                     <span class="menu_home">Consulta 4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="comLink" href="javascript:;" onclick="despliegaContenido(5, 'ejemplo5', 5);">
+                                    <span class="menu_home">VER TODOS LOS EVENTOS</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="comLink" href="javascript:;" onclick="despliegaContenido(6, 'ejemplo6', 6);">
+                                    <span class="menu_home">VER TODOS LOS PARTICIPANTES</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="comLink" href="javascript:;" onclick="despliegaContenido(7, 'ejemplo7', 7);">
+                                    <span class="menu_home">VER TODOS LOS P</span>
                                 </a>
                             </li>
                         </ul>

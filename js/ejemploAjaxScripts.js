@@ -21,6 +21,15 @@ function despliegaContenido(contenido, cadena, valor){
 	else if (contenido == 4) {
 		url = "./ejemploAjaxContenido4.php";
 	}
+	else if (contenido == 5) {
+		url = "./ejemploAjaxContenido5.php";
+	}
+	else if (contenido == 6) {
+		url = "./ejemploAjaxContenido6.php";
+	}
+	else if (contenido == 7) {
+		url = "./ejemploAjaxContenido7.php";
+	}
 	
 	$.ajax({
 		url: url,
