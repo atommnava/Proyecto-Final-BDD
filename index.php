@@ -58,7 +58,6 @@ function isActiveForm($formName, $activeForm) {
                 <select name="role" required>
                     <option value="">--Tipo de usuario--</option>
                     <option value="u">Usuario</option>
-                    <option value="a">Admin</option>
                 </select>
                 <button type="submit" name="register">Registrarse</button>
                 <p>Ya tiene una cuenta? <a href="#" onclick="showForm('login-form')">Iniciar sesión</a></p>
