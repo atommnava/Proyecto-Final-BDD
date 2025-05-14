@@ -65,6 +65,13 @@ if (!isset($_SESSION['email'])) {
             </div>
         </div>
 
+        <div class="admin-section">
+            <h2>Ver Asistencias</h2>
+            <div class="admin-actions">
+                <button onclick="window.location.href='ver_asistencias.php'">Ver Asistencias</button>
+            </div>
+        </div>
+
         <div class="consultas-container">
             <h2>Consultas Especiales</h2>
             <div class="wrapContenido layout">
