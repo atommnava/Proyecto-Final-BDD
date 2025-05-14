@@ -8,14 +8,14 @@ if (!isset($_SESSION['email'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nombre = mysqli_real_escape_string($link, $_POST['nombre']);
-    $correo = mysqli_real_escape_string($link, $_POST['correo']);
+    $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
+    $correo = mysqli_real_escape_string($conn, $_POST['correo']);
     $contrasenia = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT);
 
     $query = "INSERT INTO usuarios_pf (nombre, correo, contrasenia, tipo) 
               VALUES ('$nombre', '$correo', '$contrasenia', 'u')";
     
-    if (mysqli_query($link, $query)) {
+    if (mysqli_query($conn, $query)) {
         header("Location: admin_page.php?success=2");
     } else {
         header("Location: admin_page.php?error=2");

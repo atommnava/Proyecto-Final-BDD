@@ -8,16 +8,16 @@ if (!isset($_SESSION['email'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nombre = mysqli_real_escape_string($link, $_POST['nombre']);
-    $fechaInicio = mysqli_real_escape_string($link, $_POST['fecha_inicio']);
-    $fechaFinal = mysqli_real_escape_string($link, $_POST['fecha_final']);
-    $ubicacion = mysqli_real_escape_string($link, $_POST['ubicacion']);
-    $descripcion = mysqli_real_escape_string($link, $_POST['descripcion']);
+    $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
+    $fechaInicio = mysqli_real_escape_string($conn, $_POST['fecha_inicio']);
+    $fechaFinal = mysqli_real_escape_string($conn, $_POST['fecha_final']);
+    $ubicacion = mysqli_real_escape_string($conn, $_POST['ubicacion']);
+    $descripcion = mysqli_real_escape_string($conn, $_POST['descripcion']);
 
     $query = "INSERT INTO eventos_pf (nombre, fechaInicio, fechaFinal, ubicacion, descripcion) 
               VALUES ('$nombre', '$fechaInicio', '$fechaFinal', '$ubicacion', '$descripcion')";
     
-    if (mysqli_query($link, $query)) {
+    if (mysqli_query($conn, $query)) {
         header("Location: admin_page.php?success=1");
     } else {
         header("Location: admin_page.php?error=1");

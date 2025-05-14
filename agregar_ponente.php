@@ -8,14 +8,14 @@ if (!isset($_SESSION['email'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nombre = mysqli_real_escape_string($link, $_POST['nombre']);
-    $especializacion = mysqli_real_escape_string($link, $_POST['especializacion']);
-    $ocupacion = mysqli_real_escape_string($link, $_POST['ocupacion']);
+    $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
+    $especializacion = mysqli_real_escape_string($conn, $_POST['especializacion']);
+    $ocupacion = mysqli_real_escape_string($conn, $_POST['ocupacion']);
 
     $query = "INSERT INTO presentadores_pf (nombre, especializacion, ocupacion) 
               VALUES ('$nombre', '$especializacion', '$ocupacion')";
     
-    if (mysqli_query($link, $query)) {
+    if (mysqli_query($conn, $query)) {
         header("Location: admin_page.php?success=3");
     } else {
         header("Location: admin_page.php?error=3");

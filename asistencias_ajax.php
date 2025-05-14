@@ -4,7 +4,6 @@ session_start();
 include "config.php";
 
 if (!isset($_SESSION['idUsuario'])) {
-    echo "<div class='alert alert-warning'>Sesión no válida.</div>";
     exit();
 }
 
