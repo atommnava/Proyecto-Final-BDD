@@ -48,9 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                          VALUES (?, ?)");
                 $stmt2->bind_param("ii", $idActividad, $idPresentador);
                 if ($stmt2->execute()) {
-                    $success = "✅ Actividad y ponente registrados correctamente.";
+                    $success = "✅";
                 } else {
-                    $error = "❌ La actividad fue registrada, pero falló al asignar el ponente: " . $stmt2->error;
+                    $error = "❌";
                 }
             } else {
                 $error = "❌ Error al registrar la actividad: " . $stmt->error;
@@ -60,7 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "❌ Todos los campos son obligatorios.";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -97,6 +96,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label class="form-label">Evento</label>
             <select name="evento" class="form-select" required>
                 <option value="">Selecciona un evento</option>
+                <?php while ($row = $eventos->fetch_assoc()): ?>
+                    <option value="<?= $row['idEvento'] ?>"><?= $row['nombre'] ?></option>
+                <?php endwhile; ?>
             </select>
         </div>
         <div class="mb-3">
