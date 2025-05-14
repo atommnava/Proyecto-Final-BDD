@@ -82,16 +82,7 @@ if (!isset($_SESSION['email'])) {
                                     <span class="menu_home">VER TODOS LOS EVENTOS</span>
                                 </a>
                             </li>
-                            <li>
-                                <a class="comLink" href="javascript:;" onclick="despliegaContenido(6, 'ejemplo6', 6);">
-                                    <span class="menu_home">VER TODOS LOS PARTICIPANTES</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="comLink" href="javascript:;" onclick="despliegaContenido(7, 'ejemplo7', 7);">
-                                    <span class="menu_home">VER TODOS LOS P</span>
-                                </a>
-                            </li>
+                            
                         </ul>
                     </nav>
                 </div>
