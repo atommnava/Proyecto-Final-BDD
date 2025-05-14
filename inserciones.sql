@@ -37,14 +37,14 @@ INSERT INTO presentadores_pf (nombre, especializacion, ocupacion) VALUES
 
 
 INSERT INTO inscripciones_pf (idUsuario, idEvento, fechaInscripcion) VALUES
-(6, 2, '2025-11-28');
+(9, 2, '2025-11-28');
 
 
 —------------------------------------------------
 
 
 INSERT INTO asistencias_pf (idUsuario, idActividad, fechaAsistencia) VALUES
-(6, 2, '2025-11-15');
+(7, 2, '2025-11-15');
 
 
 

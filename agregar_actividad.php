@@ -1,8 +1,10 @@
 <?php
-// Activar errores
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+/*
+ * @file agregar_actividad.php
+ * @brief Formulario para registrar nuevas actividades en el sistema, incluyendo validación de conflictos de horario y sala.
+ * @date 12-05-2025
+ * @author Atom Nava, Julen Franco
+ */
 
 session_start();
 include "config.php";
@@ -36,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conflictos = $stmt->get_result();
 
         if ($conflictos->num_rows > 0) {
-            $error = "⚠ Ya existe una actividad en esa sala, fecha y hora.";
+            $error = " Ya existe una actividad en esa sala, fecha y hora.";
         } else {
             $stmt = $conn->prepare("INSERT INTO actividades_pf (nombre, fecha, hora, sala, idEvento)
                                     VALUES (?, ?, ?, ?, ?)");

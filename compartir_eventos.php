@@ -1,7 +1,15 @@
+/*
+ * @file compartir_eventos.php
+ * @brief Página que permite a un usuario compartir los eventos en los que está inscrito con otros usuarios del sistema.
+ * @date 11-05-2025
+ * @author Atom Nava, Julen Franco
+ */
+
 <?php
 session_start();
 include "config.php";
 
+// Verificar que el usuario ha iniciado sesión
 if (!isset($_SESSION['idUsuario'])) {
     die("Sesión no válida.");
 }
@@ -24,11 +32,15 @@ $user_email = $_SESSION['email'];
 <body>
 <div class="container">
     <h2 class="mb-4">Compartir Eventos Registrados</h2>
+    <!-- Formulario para seleccionar eventos y usuarios con los que compartir -->
     <form action="procesar_compartir.php" method="POST">
+
+        <!-- Sección para seleccionar eventos -->
         <div class="mb-3">
             <label for="eventos" class="form-label">Selecciona eventos:</label>
             <div class="form-check">
                 <?php
+                // Obtener eventos en los que el usuario está inscrito
                 $stmt = $conn->prepare("SELECT e.idEvento, e.nombre 
                                         FROM eventos_pf e
                                         JOIN inscripciones_pf i ON e.idEvento = i.idEvento
@@ -36,6 +48,8 @@ $user_email = $_SESSION['email'];
                 $stmt->bind_param("i", $user_id);
                 $stmt->execute();
                 $result = $stmt->get_result();
+
+                // Mostrar los eventos como checkboxes
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<div class='form-check'>
@@ -50,14 +64,18 @@ $user_email = $_SESSION['email'];
             </div>
         </div>
 
+        <!-- Sección para seleccionar usuarios para compartir -->
         <div class="mb-3">
             <label for="usuarios" class="form-label">Selecciona contactos para compartir:</label>
             <div class="form-check">
                 <?php
+                // Obtener otros usuarios registrados (excepto el actual)
                 $stmt = $conn->prepare("SELECT idUsuario, nombre, correo FROM usuarios_pf WHERE tipo = 'u' AND idUsuario != ?");
                 $stmt->bind_param("i", $user_id);
                 $stmt->execute();
                 $result = $stmt->get_result();
+
+                // Mostrar los usuarios como checkboxes
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<div class='form-check'>

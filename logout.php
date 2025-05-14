@@ -1,17 +1,30 @@
 <?php
-
 /*
- * 1. To start or continue the active session, necessary to access the session data stored
- * 2. To delete all session variables, thus all temporary data
- * 3. Serves to terminate the active session and delete all session data from the server. With this step, the session is completly ended.
- * 4. After all, the user will be redirected to the index.php page using a header redirect.
+ * @file logout.php
+ * @brief Termina la sesión actual del usuario y redirige al inicio.
+ * @date 12-05-2025
+ * @author Atom Nava, Julen Franco
+ *
+ * Este script realiza las siguientes acciones:
+ * 1. Inicia o continúa la sesión actual.
+ * 2. Elimina todas las variables de sesión.
+ * 3. Destruye completamente la sesión en el servidor.
+ * 4. Redirige al usuario a la página principal (index.php).
  */
 
-session_start();                // 1.               
-session_unset();                // 2.
-session_destroy();              // 3.
-header("Location: index.php");  // 4.
-exit();                         // EXIT. It ensures that script execution completely stops after the redirect process,
-                                //       so no additional code is executed.
+// 1. Iniciar o continuar la sesión actual
+session_start();                
+
+// 2. Eliminar todas las variables de sesión
+session_unset();                
+
+// 3. Destruir la sesión actual (borra los datos en el servidor)
+session_destroy();              
+
+// 4. Redireccionar al usuario al inicio del sitio
+header("Location: index.php");  
+
+// Asegura que no se ejecute más código después de la redirección
+exit();                         
 
 ?>

@@ -1,4 +1,16 @@
 <?php
+/*
+ * @file admin_panel.php
+ * @brief Panel de control para administradores del sistema
+ * @date 12-05-2025
+ * @author Atom Nava, Julen Franco
+ *
+ * Interfaz principal para gestión del sistema que incluye:
+ * - Verificación de sesión de administrador
+ * - Menú de navegación con 6 módulos principales
+ * - Sistema de consultas especiales con AJAX
+ * - Integración con scripts jQuery para funcionalidad dinámica
+ */
 include "config.php";
 session_start();
 
@@ -23,6 +35,7 @@ if (!isset($_SESSION['email'])) {
 </head>
 
 <body style="background: #f5f5f5;">
+    <!-- SECCIÓN: Bienvenida y cierre de sesión -->
     <div class="admin-container">
         <div class="box" style="position: absolute; left: 50px; top: 1050px;">
             <h1>Bienvenido, <span><?= htmlspecialchars($_SESSION['name']); ?></span></h1>
@@ -30,6 +43,7 @@ if (!isset($_SESSION['email'])) {
             <button onclick="window.location.href='logout.php'">Cerrar sesión</button>
         </div>
 
+        <!-- MÓDULOS PRINCIPALES -->
         <div class="admin-section">
             <h2>Gestión de Eventos</h2>
             <div class="admin-actions">
@@ -72,6 +86,7 @@ if (!isset($_SESSION['email'])) {
             </div>
         </div>
 
+        <!-- SECCIÓN: Consultas especiales con AJAX -->
         <div class="consultas-container">
             <h2>Consultas Especiales</h2>
             <div class="wrapContenido layout">
@@ -103,16 +118,12 @@ if (!isset($_SESSION['email'])) {
                                     <span class="menu_home">VER TODOS LOS EVENTOS</span>
                                 </a>
                             </li>
-                            
                         </ul>
                     </nav>
                 </div>
                 <div id="contenido" class="contenido"></div>
             </div>
         </div>
-
-    </div>
-
-    
+    </div>  
 </body>
 </html>

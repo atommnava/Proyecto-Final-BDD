@@ -1,3 +1,9 @@
+/*
+ * @file agregar_evento.php
+ * @brief Página para registrar nuevos eventos en la base de datos a través de un formulario.
+ * @date 12-05-2025
+ * @author Atom Nava, Julen Franco
+ */
 <?php
 session_start();
 include "config.php";

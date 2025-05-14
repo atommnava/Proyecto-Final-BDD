@@ -1,8 +1,15 @@
+/*
+ * @file asistenciasajax.php
+ * @brief Filtra y muestra la lista de asistencias del usuario autenticado según los filtros enviados por POST.
+ * @date 13-05-2025
+ * @author Atom Nava, Julen Franco
+ */
 
 <?php
 session_start();
 include "config.php";
 
+// Verificar que el usuario esté autenticado
 if (!isset($_SESSION['idUsuario'])) {
     exit();
 }
@@ -12,6 +19,7 @@ $desde = $_POST['desde'] ?? '';
 $hasta = $_POST['hasta'] ?? '';
 $actividad = $_POST['actividad'] ?? '';
 
+// Consulta base para obtener asistencias del usuario
 $query = "SELECT a.nombre AS actividad, e.nombre AS evento, a.fecha, a.hora, a.sala
           FROM asistencias_pf asi
           JOIN actividades_pf a ON asi.idActividad = a.idActividad
@@ -21,6 +29,7 @@ $query = "SELECT a.nombre AS actividad, e.nombre AS evento, a.fecha, a.hora, a.s
 $params = [$user_id];
 $types = "i";
 
+// Agregar filtros dinámicamente si se especificaron
 if (!empty($desde)) {
     $query .= " AND a.fecha >= ?";
     $params[] = $desde;
@@ -39,11 +48,13 @@ if (!empty($actividad)) {
 
 $query .= " ORDER BY a.fecha DESC, a.hora DESC";
 
+// Preparar y ejecutar la consulta
 $stmt = $conn->prepare($query);
 $stmt->bind_param($types, ...$params);
 $stmt->execute();
 $result = $stmt->get_result();
 
+// Mostrar resultados si hay coincidencias
 if ($result->num_rows > 0) {
     echo "<ul class='list-group'>";
     while ($row = $result->fetch_assoc()) {
@@ -57,6 +68,7 @@ if ($result->num_rows > 0) {
     }
     echo "</ul>";
 } else {
+    // Si no se encuentran registros
     echo "<div class='alert alert-warning'>No se encontraron asistencias con esos filtros.</div>";
 }
 ?>

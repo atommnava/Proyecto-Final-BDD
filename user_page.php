@@ -3,7 +3,7 @@
 session_start();
 include "config.php";
 
-if (!isset($_SESSION['idUsuario'])) {
+if (!isset($_SESSION['idUsuario']) || !isset($_SESSION['email'])) {
     die("Sesión no válida. Por favor, inicia sesión nuevamente.");
 }
 
@@ -36,14 +36,114 @@ $user_email = $_SESSION['email'];
     </div>
 
     <!-- Botones de secciones -->
-    <div class="d-flex flex-wrap gap-2 mb-3">
-        <button class="btn btn-primary toggle-btn" onclick="toggleSection('eventos')">📅 Eventos Registrados</button>
-        <button class="btn btn-success toggle-btn" onclick="toggleSection('asistencias')">✅ Asistencias Registradas</button>
-        <button class="btn btn-info toggle-btn" onclick="toggleSection('participantes')">👥 Participantes Registrados</button>
+    <div class="d-flex gap-2 mb-3">
+        <button class="btn btn-primary toggle-btn" onclick="toggleSection('eventos')">📅 Mostrar/Ocultar Eventos</button>
+        <button class="btn btn-success toggle-btn" onclick="toggleSection('asistencias')">✅ Mostrar/Ocultar Asistencias</button>
+        
+        <button class="btn btn-info toggle-btn" onclick="toggleSection('participantes')">👥 Mostrar/Ocultar Participantes</button>
         <button class="btn btn-warning toggle-btn" onclick="toggleSection('compartidos')">🔗 Eventos Compartidos Conmigo</button>
     </div>
 
-    <!-- Secciones existentes (omitidas para brevedad)... -->
+    <!-- Eventos Registrados -->
+    <div id="eventos" class="card mb-4">
+        <div class="card-header">📅 Eventos Registrados</div>
+        <ul class="list-group list-group-flush">
+            <?php
+            $stmt = $conn->prepare("SELECT e.nombre, e.fechaInicio, e.ubicacion 
+                                    FROM eventos_pf e
+                                    JOIN inscripciones_pf i ON e.idEvento = i.idEvento
+                                    WHERE i.idUsuario = ?
+                                    ORDER BY e.fechaInicio DESC");
+            $stmt->bind_param("i", $user_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<li class='list-group-item'>
+                            <strong>{$row['nombre']}</strong><br>
+                            📍 {$row['ubicacion']}<br>
+                            🗓️ " . date('d/m/Y', strtotime($row['fechaInicio'])) . "
+                          </li>";
+                }
+            } else {
+                echo "<li class='list-group-item'>No tienes eventos registrados.</li>";
+            }
+            ?>
+        </ul>
+    </div>
+
+    <!-- Asistencias Registradas -->
+    <div id="asistencias" class="card mb-4">
+        <div class="card-header">✅ Asistencias Registradas</div>
+        <ul class="list-group list-group-flush">
+            <?php
+            $stmt = $conn->prepare("SELECT a.nombre AS actividad, e.nombre AS evento, a.fecha, a.hora, a.sala
+                                    FROM asistencias_pf asi
+                                    JOIN actividades_pf a ON asi.idActividad = a.idActividad
+                                    JOIN eventos_pf e ON a.idEvento = e.idEvento
+                                    WHERE asi.idUsuario = ?
+                                    ORDER BY a.fecha DESC, a.hora DESC");
+            $stmt->bind_param("i", $user_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<li class='list-group-item'>
+                            <strong>{$row['actividad']}</strong><br>
+                            🏷️ Evento: {$row['evento']}<br>
+                            🗓️ " . date('d/m/Y', strtotime($row['fecha'])) . " ⏰ " . date('H:i', strtotime($row['hora'])) . "<br>
+                            🏠 Sala: {$row['sala']}
+                          </li>";
+                }
+            } else {
+                echo "<li class='list-group-item'>No tienes asistencias registradas.</li>";
+            }
+            ?>
+        </ul>
+    </div>
+
+    <!-- Participantes Registrados y sus Eventos -->
+    <div id="participantes" class="card mb-4" style="display: none;">
+        <div class="card-header">👥 Participantes Registrados</div>
+        <ul class="list-group list-group-flush">
+            <?php
+            $stmt = $conn->prepare("SELECT idUsuario, nombre, correo FROM usuarios_pf WHERE tipo = 'u' ORDER BY nombre ASC");
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                while ($user = $result->fetch_assoc()) {
+                    echo "<li class='list-group-item'>
+                            <strong>{$user['nombre']}</strong><br>
+                            ✉️ {$user['correo']}";
+
+                    $sub = $conn->prepare("SELECT e.nombre FROM eventos_pf e
+                                           JOIN inscripciones_pf i ON e.idEvento = i.idEvento
+                                           WHERE i.idUsuario = ?");
+                    $sub->bind_param("i", $user['idUsuario']);
+                    $sub->execute();
+                    $eventos = $sub->get_result();
+
+                    if ($eventos->num_rows > 0) {
+                        echo "<div class='sublist'><u>Eventos registrados:</u><ul>";
+                        while ($ev = $eventos->fetch_assoc()) {
+                            echo "<li>{$ev['nombre']}</li>";
+                        }
+                        echo "</ul></div>";
+                    } else {
+                        echo "<div class='sublist text-muted'>Sin eventos registrados.</div>";
+                    }
+
+                    echo "</li>";
+                }
+            } else {
+                echo "<li class='list-group-item'>No hay participantes registrados.</li>";
+            }
+            ?>
+        </ul>
+    </div>
 
     <!-- Eventos Compartidos Conmigo -->
     <div id="compartidos" class="card mb-4" style="display: none;">
