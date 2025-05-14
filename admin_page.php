@@ -51,6 +51,20 @@ if (!isset($_SESSION['email'])) {
             </div>
         </div>
 
+        <div class="admin-section">
+            <h2>Gestión de Actividades</h2>
+            <div class="admin-actions">
+                <button onclick="window.location.href='agregar_actividad.php'">Agregar Actividad</button>
+            </div>
+        </div>
+
+        <div class="admin-section">
+            <h2>Registrar Asistencia</h2>
+            <div class="admin-actions">
+                <button onclick="window.location.href='registrar_asistencia.php'">Registrar Asistencia</button>
+            </div>
+        </div>
+
         <div class="consultas-container">
             <h2>Consultas Especiales</h2>
             <div class="wrapContenido layout">
