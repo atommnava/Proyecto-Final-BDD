@@ -2,16 +2,16 @@
 
 // Configuración de parámetros del servidor
 
-$cfgServer['host'] = 'localhost';
-$cfgServer['user'] = 'ict23amn';
-$cfgServer['password'] = '258927';
-$cfgServer['dbname'] = 'ict23amn';
+$cfgServer['host'] = '';
+$cfgServer['user'] = '';
+$cfgServer['password'] = '';
+$cfgServer['dbname'] = '';
 
 // Parámetros de conexión a la base de datos
-$host = "localhost";
-$user = "ict23amn";
-$password = "258927";
-$database = "ict23amn";
+$host = "";
+$user = "";
+$password = "";
+$database = "";
 
 // Crear conexión con MySQL utilizando mysqli
 $conn = new mysqli($host, $user, $password, $database);
